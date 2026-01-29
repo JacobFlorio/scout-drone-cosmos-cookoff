@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'heartbeat_monitor_node = asd_safety.heartbeat_monitor_node:main',
+            'safety_watchdog_node = asd_safety.safety_watchdog_node:main',
         ],
     },
 )
