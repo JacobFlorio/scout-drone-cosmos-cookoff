@@ -39,3 +39,6 @@ sim/px4/PX4-Autopilot/compile_commands.json
 ros_ws/build/
 ros_ws/install/
 ros_ws/log/
+
+# px4_msgs (pulled/installed separately)
+ros_ws/src/px4_msgs/
