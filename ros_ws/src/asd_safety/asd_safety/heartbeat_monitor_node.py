@@ -21,7 +21,7 @@ class HeartbeatMonitorNode(Node):
         self.declare_parameter('timeout_sec', 2.0)
         self.declare_parameter('publish_rate_hz', 2.0)
 
-        self.required: List[str] = list(self.get_parameter('required_heartbeats').value)
+        self.required: List[str] = list(self.list(map(_norm, self.list(map(_norm, self.get_parameter('required_heartbeats').value)))))
         self.timeout_sec: float = float(self.get_parameter('timeout_sec').value)
         self.publish_rate_hz: float = float(self.get_parameter('publish_rate_hz').value)
 

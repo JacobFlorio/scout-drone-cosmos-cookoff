@@ -25,3 +25,17 @@ ml/datasets/**/*
 # Isaac/Omniverse caches
 **/.cache/
 **/omniverse/
+
+# --- PX4 SITL build artifacts ---
+sim/px4/PX4-Autopilot/build/
+sim/px4/PX4-Autopilot/log/
+sim/px4/PX4-Autopilot/*.ulg
+sim/px4/PX4-Autopilot/*.bin
+sim/px4/PX4-Autopilot/.ninja*
+sim/px4/PX4-Autopilot/.vscode/
+sim/px4/PX4-Autopilot/compile_commands.json
+
+# --- ROS workspace build artifacts ---
+ros_ws/build/
+ros_ws/install/
+ros_ws/log/

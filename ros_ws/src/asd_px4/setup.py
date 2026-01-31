@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'offboard_commander_node = asd_px4.offboard_commander_node:main',
             'px4_heartbeat_node = asd_px4.publisher_heartbeat_node:main',
         ],
     },
