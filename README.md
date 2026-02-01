@@ -15,8 +15,8 @@ Autonomous home security drone project using:
 - `results/` benchmark tables + sim run manifests (no large binaries)
 
 ## Status
-- [ ] Repo scaffold
-- [ ] ROS2 bringup + PX4 offboard MVP in SITL
+- [x] Repo scaffold
+- [x] ROS2 bringup + PX4 offboard MVP in SITL
 - [ ] Perception pipeline (TensorRT)
 - [ ] Autonomy behaviors (patrol/investigate/RTL)
 - [ ] Isaac Sim scenario suite + benchmarks
