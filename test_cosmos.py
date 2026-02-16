@@ -1,41 +1,45 @@
-from transformers import AutoProcessor, AutoModelForCausalLM
+from transformers import Qwen3VLForConditionalGeneration, AutoProcessor
 import torch
 
-model_id = "nvidia/Cosmos-Reason2-2B"  # 2B for speed; swap to -8B later if VRAM allows
-
 print("Loading processor...")
-processor = AutoProcessor.from_pretrained(model_id)
+processor = AutoProcessor.from_pretrained("nvidia/Cosmos-Reason2-2B")
 
-print("Loading model (first run will download ~4-5 GB)...")
-model = AutoModelForCausalLM.from_pretrained(
-    model_id,
+print("Loading model (first run downloads ~4-5 GB)...")
+model = Qwen3VLForConditionalGeneration.from_pretrained(
+    "nvidia/Cosmos-Reason2-2B",
     torch_dtype=torch.float16,
-    device_map="auto",          # auto = GPU if available
-    low_cpu_mem_usage=True
+    device_map="auto",
+    attn_implementation="sdpa"  # recommended in card for efficiency
 )
 
 print("Model loaded on:", next(model.parameters()).device)
 
-prompt = "From a drone's egocentric camera view, analyze this scene: a person is approaching a backyard fence at night with a backpack and looking around suspiciously. Reason step-by-step about whether this is a potential security threat and what action the drone should take."
-
-messages = [{"role": "user", "content": [{"type": "text", "text": prompt}]}]
+# Simple text-only test (no video yet)
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {"type": "text", "text": "From a drone's egocentric view: A person approaches a backyard fence at night with a backpack, looking around suspiciously. Reason step-by-step if this is a security threat and what the drone should do. Use <think>reasoning</think> <answer>final decision</answer> format."}
+        ]
+    }
+]
 
 print("Preparing inputs...")
-inputs = processor.apply_chat_template(
-    messages,
-    add_generation_prompt=True,
-    return_tensors="pt"
-).to("cuda")
+text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+inputs = processor(text=[text], return_tensors="pt").to("cuda")
 
-print("Generating response...")
+print("Generating...")
 with torch.no_grad():
-    outputs = model.generate(
-        inputs,
-        max_new_tokens=256,
-        do_sample=False,           # deterministic for reproducibility
-        temperature=0.0
+    generated_ids = model.generate(
+        **inputs,
+        max_new_tokens=1024,           # doubled again – should capture full reasoning
+        do_sample=False,
+        temperature=0.0,
+        eos_token_id=processor.tokenizer.eos_token_id  # explicit stop at EOS
     )
 
-response = processor.decode(outputs[0], skip_special_tokens=True)
+generated_ids_trimmed = generated_ids[:, inputs.input_ids.shape[1]:]
+response = processor.batch_decode(generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
+
 print("\n=== Cosmos Reason 2 Output ===\n")
 print(response)
