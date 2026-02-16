@@ -14,13 +14,12 @@ model = Qwen3VLForConditionalGeneration.from_pretrained(
 
 print("Model loaded on:", next(model.parameters()).device)
 
-# Simple text-only test (no video yet)
 messages = [
     {
         "role": "user",
         "content": [
-            {"type": "image", "image": "data/frames/test_frame.jpg"},
-            {"type": "text", "text": "From drone camera feed: Analyze this image for security threat. Reason step-by-step using <think>full reasoning here</think><answer>final threat level and action</answer> format. Consider lighting, objects, behavior, spatial layout, potential intrusion risks."}
+            {"type": "video", "video": "data/clips/test_clip1.mp4", "fps": 4},
+            {"type": "text", "text": "From drone camera feed: Analyze this video for security threat. Reason step-by-step using <think>full reasoning here</think><answer>final threat level and action</answer> format. Consider motion, timing, objects, behavior, spatial changes, potential intrusion risks."}
         ]
     }
 ]
