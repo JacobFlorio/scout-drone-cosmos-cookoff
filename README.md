@@ -1,5 +1,8 @@
 # Autonomous Security Drone (PX4 + ROS 2 + Jetson + SIYI A8 + Isaac Sim)
 
+Scout Drone: Edge-deployed physical AI agent using Cosmos Reason 2 for real-time threat reasoning and autonomous response in home security."
+
+
 Autonomous home security drone project using:
 - **Flight Controller:** Pixhawk 6C (PX4)
 - **Onboard Compute:** NVIDIA Jetson Orin Nano
@@ -13,6 +16,11 @@ Autonomous home security drone project using:
 - `sim/px4_gz/` PX4 SITL + Gazebo assets/launch
 - `ml/` training, evaluation, export (ONNX/TensorRT)
 - `results/` benchmark tables + sim run manifests (no large binaries)
+- ## Cosmos Inference Status
+- Model: nvidia/Cosmos-Reason2-2B
+- Status: GPU inference successful (RTX 5080, FP16)
+- Example output: Full <think>/<answer> chain on suspicious fence approach scenario
+- Next: Integrate camera frame input and ROS2 node
 
 ## Status
 - [x] Repo scaffold
@@ -20,3 +28,6 @@ Autonomous home security drone project using:
 - [ ] Perception pipeline (TensorRT)
 - [ ] Autonomy behaviors (patrol/investigate/RTL)
 - [ ] Isaac Sim scenario suite + benchmarks
+- [X] Cosmos-Reason2-2B inference on GPU (RTX 5080)
+- [ ] Image input from SIYI A8
+- [ ] ROS2 node for fame -> reasoning pipeline
