@@ -19,7 +19,8 @@ messages = [
     {
         "role": "user",
         "content": [
-            {"type": "text", "text": "From a drone's egocentric view: A person approaches a backyard fence at night with a backpack, looking around suspiciously. Reason step-by-step if this is a security threat and what the drone should do. Use <think>reasoning</think> <answer>final decision</answer> format."}
+            {"type": "image", "image": "data/frames/test_frame.jpg"},
+            {"type": "text", "text": "From drone camera feed: Analyze this image for security threat. Reason step-by-step using <think>full reasoning here</think><answer>final threat level and action</answer> format. Consider lighting, objects, behavior, spatial layout, potential intrusion risks."}
         ]
     }
 ]
