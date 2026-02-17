@@ -2,6 +2,9 @@
 
 NVIDIA Cosmos Cookoff Entry, see link for details: https://luma.com/nvidia-cosmos-cookoff?tk=auN5se
 
+## Demo Video 
+Live reasoning pipeline test with SIYI A8 frame loop (unlisted): https://youtu.be/LEmaBaJEKnU
+
 Scout Drone: Edge-deployed physical AI agent using Cosmos Reason 2 deployed to Jetson for real-time threat reasoning and autonomous response in home security.
 
 Hardware:
@@ -45,6 +48,3 @@ Software:
 - [X] Cosmos-Reason2-2B inference on GPU (RTX 5080)
 - [ ] Image input from SIYI A8
 - [ ] ROS2 node for frame -> Cosmos reasoning -> action pipeline
-
-## Demo Video 
-Live reasoning pipeline test with SIYI A8 frame loop (unlisted): https://youtu.be/LEmaBaJEKnU
