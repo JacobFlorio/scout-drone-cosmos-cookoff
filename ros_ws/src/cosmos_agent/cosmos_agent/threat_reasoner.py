@@ -61,6 +61,7 @@ class CosmosThreatReasoner(Node):
         # Improved parsing from <answer> tag
         threat_level = "unknown"
         action = "monitor"
+        confidence = 0.0
         try:
             answer_start = response.find("<answer>") + len("<answer>")
             answer_end = response.rfind("</answer>")
@@ -70,21 +71,26 @@ class CosmosThreatReasoner(Node):
                 if any(word in answer_text for word in ["high", "severe", "dangerous", "intrusion", "breach", "threat"]):
                     threat_level = "high"
                     action = "investigate"  # or "alert owner", "patrol waypoint", "engage RTL"
+                    confidence = 0.9
                 elif any(word in answer_text for word in ["medium", "moderate", "suspicious", "potential"]):
                     threat_level = "medium"
                     action = "monitor closely"
+                    confidence = 0.6
                 elif any(word in answer_text for word in ["low", "none", "safe", "benign"]):
                     threat_level = "low"
                     action = "monitor"
+                    confidence = 0.8
                 else:
                     threat_level = "low"
                     action = "monitor"
+                    confidence = 0.5
         except Exception as e:
             self.get_logger().warn(f"Parsing error: {str(e)}")
 
         reasoning_json = json.dumps({
             "threat_level": threat_level,
             "action": action,
+            "confidence": confidence,
             "reasoning": response[:500],  # truncate for payload
             "raw_response": response[:200]  # optional debug field
         })
