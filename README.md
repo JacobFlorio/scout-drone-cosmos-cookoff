@@ -18,7 +18,7 @@ Hardware:
 - **Battery:** Tattu Plus 22000mAh 22.2V 25C 6s1P Lipo Smart Battery Pack with XT90-S Plug
 - **Telemetry:** Holybro SiK Telemetry Radio V3
 - **Power Regulation:** PM07 Power Module, DC-DC buck converter
-- **Frame:** Custom F450 Variant using SolidWorks -> PrusaSlicer -> 3D Printed (PETG-CF)
+- **Frame:** Custom Quadcopter build using SolidWorks -> PrusaSlicer -> 3D Printed (PETG-CF)
 
 Software:
 - **Middleware:** ROS 2 Humble + PX4 uXRCE-DDS bridge
