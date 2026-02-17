@@ -45,3 +45,6 @@ Software:
 - [X] Cosmos-Reason2-2B inference on GPU (RTX 5080)
 - [ ] Image input from SIYI A8
 - [ ] ROS2 node for frame -> Cosmos reasoning -> action pipeline
+
+## Demo Video 
+Live reasoning pipeline test with SIYI A8 frame loop (unlisted): https://youtu.be/LEmaBaJEKnU
