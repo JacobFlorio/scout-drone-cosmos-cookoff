@@ -2,9 +2,6 @@
 
 NVIDIA Cosmos Cookoff Entry, see link for details: https://luma.com/nvidia-cosmos-cookoff?tk=auN5se
 
-## Demo Video 
-Live reasoning pipeline test with SIYI A8 frame loop (unlisted): https://youtu.be/LEmaBaJEKnU
-
 Scout Drone: Edge-deployed physical AI agent using Cosmos Reason 2 deployed to Jetson for real-time threat reasoning and autonomous response in home security.
 
 Hardware:
@@ -30,21 +27,29 @@ Software:
 - `sim/px4_gz/` PX4 SITL + Gazebo assets/launch
 - `ml/` training, evaluation, export (ONNX/TensorRT)
 - `results/` benchmark tables + sim run manifests (no large binaries)
-  
-- ## Cosmos Inference Status
-- Model: nvidia/Cosmos-Reason2-2B
-- Status: GPU inference successful (RTX 5080, FP16)
-- Example output: Full <think>/<answer> chain on suspicious fence approach scenario
-- Next: Integrate camera frame input and ROS2 node
+
+## Cosmos Reason 2 - Live Inference
+- **Model:** nvidia/Cosmos-Reason2-2B
+- **Status:** ✅ Live GPU inference (RTX 5080, FP16)
+- **Input:** SIYI A8 camera frames
+- **Output:** Chain-of-thought physical reasoning -> parsed threat level + action
+
+### Real Output on Threat Scenario (SIYI A8 frame):
+
+<think>
+Okay, let's break this down. The video shows a person in a dark hoodie holding a long, thin object that looks like a knife or similar tool. They're leaning over a desk with a laptop and other items. The setting is indoors, maybe an office or home workspace. The person's posture is aggressive, with the object raised and pointed, which could indicate intent to harm. The presence of a knife or similar tool is a clear security concern because knives are dangerous weapons. The person's behavior, combined with the tool they're holding, suggests they might be preparing to attack someone or something. The desk setup includes a laptop and other items, which could be targets if the person is trying to cause damage. The lighting is dim, which might make it harder to see potential threats, but the overall scene still conveys a sense of danger. Since the person is alone and the video does not show others, it's likely a personal attack scenario. The threat level here is high because of the weapon and aggressive posture.
+</think><answer>threat_level: high, action: alert</answer>
+
+**Parsed output:** 
+{"threat_level": "high", "action": "alert"}
 
 ## Drone Status
-- [x] Repo scaffold
-- [x] ROS2 bringup + PX4 offboard MVP in SITL
-- [ ] Perception pipeline (TensorRT)
-- [ ] Autonomy behaviors (patrol/investigate/RTL)
-- [ ] Isaac Sim scenario suite + benchmarks
-
-## Cosmos Reason Status
-- [X] Cosmos-Reason2-2B inference on GPU (RTX 5080)
-- [ ] Image input from SIYI A8
-- [ ] ROS2 node for frame -> Cosmos reasoning -> action pipeline
+- ✅ Repo scaffold
+- ✅ ROS2 bringup + PX4 offboard MVP in SITL
+- ✅ Cosmos-Reason2-2B live inference on GPU
+- ✅ Image input from SIYI A8
+- ✅ ROS2 node: frame -> Cosmos reasoning -> /threat_reasoning topic
+- ✅ Isaac Sim synthetic data generation (500 frames, Rivermark scene)
+- 🔄 Fine-tune on synthetic + real data
+- 🔄 PX4 SITL action triggering
+- 🔄 Jetson Orin Nano deployment
