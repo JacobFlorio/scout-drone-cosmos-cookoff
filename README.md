@@ -8,6 +8,7 @@
 **NVIDIA Cosmos Cookoff:** https://luma.com/nvidia-cosmos-cookoff?tk=auN5se
 **Demo Video:**
 [![Demo Video](https://img.youtube.com/vi/S2ii9YnADrw/0.jpg)](https://youtu.be/S2ii9YnADrw)
+
 **Watch the 2-minute live demo → autonomous threat detection & reasoning on Jetson Orin Nano**
 
 Edge-deployed physical AI agent using Cosmos Reason 2 deployed to Jetson Orin Nano for real-time threat reasoning and autonomous response in home security.
