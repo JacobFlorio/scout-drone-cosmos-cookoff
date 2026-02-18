@@ -44,6 +44,37 @@ Key innovation: Low-latency, on-device inference without cloud dependency, combi
 - `sim/px4_gz/` PX4 SITL + Gazebo assets/launch
 - `results/` benchmark tables + sim run manifests (no large binaries)
 
+## Quick Start
+
+**Requirements:** Ubuntu 22.04, ROS 2 Humble, Python 3.10, CUDA GPU
+
+**1. Clone and install dependencies:**
+```bash
+git clone https://github.com/JacobFlorio/scout-drone-cosmos-cookoff.git
+cd scout-drone-cosmos-cookoff
+pip install transformers torch pillow
+```
+
+**2. Run Cosmos on a threat frame:**
+```bash
+python3 test_cosmos_image.py data/frames/machete_frame.jpg
+```
+
+**3. Run the full ROS2 pipeline:**
+```bash
+cd ros_ws
+colcon build --symlink-install
+source install/setup.bash
+ros2 run cosmos_agent threat_reasoner &
+ros2 run cosmos_agent image_publisher
+```
+
+## Performance
+| Platform | Inference Time | Notes |
+|---|---|---|
+| RTX 5080 (FP16) | ~18s/frame | Development machine |
+| Jetson Orin Nano | ~60-90s/frame | Target deployment (estimated) |
+
 ## Cosmos Reason 2 - Live Inference
 - **Model:** nvidia/Cosmos-Reason2-2B
 - **Status:** ✅ Live GPU inference (RTX 5080, FP16)
