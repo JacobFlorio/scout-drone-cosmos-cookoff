@@ -16,11 +16,11 @@ Edge-deployed physical AI agent (Baldwin) using Cosmos Reason2 for real-time thr
 
 ## Conceptual Design
 Baldwin is an embodied AI agent with closed loop communication: hardware as body, software as mind.
-**Perception**: SIYI A8 4K gimbal captures video/frames. 
-**Reasoning**: Jetson runs Cosmos Reason2 (VLM) with OpenCV for visual CoT (threat ID, actions). Outputs JSON via ROS2.
-**Decision/Action**: ROS2 bridge to PX4 for autonomy (hover/alert on high threat). Telemetry/SiK + ELRS for control.
-**Endurance**: 22Ah battery + 1300kV motors = 40-60 min patrols; inductive charging for indefinite operation in sensor networks.
-**Learning**: Isaac Sim frames + SIYI data for fine-tuning
+**Perception:** SIYI A8 4K gimbal captures video/frames. 
+**Reasoning:** Jetson runs Cosmos Reason2 (VLM) with OpenCV for visual CoT (threat ID, actions). Outputs JSON via ROS2.
+**Decision/Action:** ROS2 bridge to PX4 for autonomy (hover/alert on high threat). Telemetry/SiK + ELRS for control.
+**Endurance:** 22Ah battery + 1300kV motors = 40-60 min patrols; inductive charging for indefinite operation in sensor networks.
+**Learning:** Isaac Sim frames + SIYI data for fine-tuning
 
 Key innovation: Low-latency, cloud-free edge AI combining VLM with drone control - scalable for farms, property security, research/military applications. Built for secure, privacy-focused environments. 
 
