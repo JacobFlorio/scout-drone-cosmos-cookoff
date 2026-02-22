@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'threat_reasoner = cosmos_agent.threat_reasoner:main',
+            'image_publisher = cosmos_agent.image_publisher:main',
         ],
     },
 )
