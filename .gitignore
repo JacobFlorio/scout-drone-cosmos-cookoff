@@ -42,3 +42,4 @@ ros_ws/log/
 
 # px4_msgs (pulled/installed separately)
 ros_ws/src/px4_msgs/
+models/cosmos_reason2_lora/checkpoint-*

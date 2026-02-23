@@ -1,0 +1,24 @@
+{
+  "base": {
+    "data/frames/machete_frame.jpg": {
+      "avg_time": 8.803209940592447,
+      "response": "<think>reasoning<think>\nOkay, let's see. The user provided an environment setup from a drone camera feed. The main elements are a white rectangular object on the left, a blue circular object on the right, and a gray rectangular object in the center. The task is to analyze this for security threats a"
+    },
+    "data/frames/test_frame.jpg": {
+      "avg_time": 7.815804322560628,
+      "response": "<think>reasoning<think>\nOkay, let's see. The user provided an environment setup from a drone camera feed. The main elements are a white rectangular object on the left, a blue circular object on the right, and a gray rectangular object in the center. The task is to analyze this for security threats a"
+    }
+  },
+  "lora": {
+    "data/frames/machete_frame.jpg": {
+      "avg_time": 13.492001136144003,
+      "response": "<think>Okay, let's break this down. The user provided a detailed description of an image captured from a drone, focusing on security threats. The task is to analyze the scene and determine the threat level and appropriate action.\n\nFirst, I need to parse the given information. The image shows a perso"
+    },
+    "data/frames/test_frame.jpg": {
+      "avg_time": 13.762242237726847,
+      "response": "<think>Okay, let's break this down. The user provided a detailed description of an image captured from a drone, focusing on security threats. The task is to analyze the scene and determine the threat level and appropriate action.\n\nFirst, I need to parse the given information. The image shows a perso"
+    }
+  },
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "runs_per_frame": 3
+}
