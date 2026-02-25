@@ -4,7 +4,7 @@
 
 **NVIDIA Cosmos Cookoff:** https://luma.com/nvidia-cosmos-cookoff?tk=auN5se
 
-> **Demo Video:** [Watch the live demo →](#) Autonomous threat detection & reasoning with Cosmos Reason 2
+> **Demo Video:** https://www.youtube.com/watch?v=jc0jlm4MCTE
 
 ---
 
